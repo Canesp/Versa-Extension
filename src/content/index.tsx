@@ -6,28 +6,6 @@ import App from "./app/app";
 
 const rootStyle = `
     @import url("${chrome.runtime.getURL("styles.css")}");
-
-    :host {
-        position: fixed;
-        top: 20px;
-        right: 50px;
-        z-index: 9999;
-        width: 350px;
-        height: 700px;
-        border-radius: 0.5rem;
-        border-width: 1px;
-        border-color: #e2e8f0;
-        background-color: #ffffff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    :host([state="closed"]) {
-        display: none;
-    }
-
-    :host([state="open"]) {
-        display: block;
-    }
 `;
 
 const onLoaded = () => {

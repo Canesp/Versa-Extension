@@ -1,9 +1,177 @@
-.App-root {
-  background-color: #ff0000;
-  width: 200px;
-  height: 300px;
+/* Google Fonts imports. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* Global Styles */
+:host {
+  /* Host style variables (light theme) */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --primary: 346.8 77.2% 49.8%;
+  --primary-foreground: 355.7 100% 97.3%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+
+  --border: 240 5.9% 90%;
+  --radius: 0.5rem;
+  --radius-md: 0.375rem;
+  --radius-sm: 0.125rem;
+
+
+  --font-family: "Inter", sans-serif;
+
+  /* Host Global style */
+  position: fixed;
+  top: 20px;
+  right: -100%;
+  z-index: 9999;
+  width: 350px;
+  height: 850px;
+
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+
+  border-width: 1px;
+  border-color: hsl(var(--border));
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+
+  box-shadow: 0 0 10px 0 hsla(var(--foreground), 0.1);
+
+  transition: right 0.3s ease-in-out;
+
+  font-family: var(--font-family);
 }
 
-body {
-  background-color: #0000ff;
+:host.dark {
+  /* Host style variables (dark theme) */  
+  --background: 20 14.3% 4.1%;
+  --foreground: 0 0% 95%;
+  --primary: 346.8 77.2% 49.8%;
+  --primary-foreground: 355.7 100% 97.3%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+
+  --border: 240 3.7% 15.9%;
+
+  /* Host Global style */
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
+
+:host([state="open"]) {
+  right: 0;
+}
+
+:host([state="closed"]) {
+  right: -100%;
+}
+
+/* ----------------- */
+/* Components Styles */
+/* ----------------- */
+
+/* Button Component */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-align: center;
+}
+
+.btn-default {
+  background-color: hsl(var(--primary));
+  color: #fff;
+  border: none;
+}
+
+.btn-default:hover {
+  background-color: hsl(var(--primary-foreground));
+}
+
+/* Destructive variant */
+.btn-destructive {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.btn-destructive:hover {
+  background-color: #c82333;
+}
+
+/* Outline variant */
+.btn-outline {
+  background-color: transparent;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.btn-outline:hover {
+  background-color: #f8f9fa;
+}
+
+/* Secondary variant */
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Ghost variant */
+.btn-ghost {
+  background-color: transparent;
+  color: #333;
+}
+
+.btn-ghost:hover {
+  background-color: #f8f9fa;
+}
+
+/* Link variant */
+.btn-link {
+  background-color: transparent;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: #0056b3;
+}
+
+/* Sizes */
+.btn-default-size {
+  height: 40px;
+  padding: 0 16px;
+}
+
+.btn-sm {
+  height: 36px;
+  padding: 0 12px;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  height: 44px;
+  padding: 0 24px;
+  font-size: 1.125rem;
+}
+
+.btn-icon {
+  height: fit-content;
+  width: fit-content;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
