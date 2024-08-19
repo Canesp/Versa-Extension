@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Versa - Currency Converter",
+    "description": "Converts currencies",
+    "version": "0.0.1",
+
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+
+    "action": {
+        
+    },
+
+    "background": {
+        "service_worker": "background.js"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["https://*.google.com/*"],
+            "js": ["content.js"]
+        }
+    ],
+
+    "web_accessible_resources": [
+        {
+            "resources": ["styles.css"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
