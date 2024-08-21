@@ -7,7 +7,7 @@
         "esModuleInterop": true,
         "baseUrl": "./",
         "paths": {
-            "@/*": ["./src/*"],
+            "@/*": ["./src/assets/shadcn-ui/*"],
         },   
     },
     "include": ["src/**/*,ts", "src/**/*.tsx"],
