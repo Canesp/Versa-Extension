@@ -66,8 +66,8 @@ const onLoaded = () => {
 };
 
 // Check if the document is loaded.
-if (document.readyState === "complete") {
+/* if (document.readyState === "complete") {
     onLoaded();
 } else {
     window.addEventListener("load", onLoaded);
-}
+} */

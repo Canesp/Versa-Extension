@@ -12,8 +12,9 @@ function App() {
     return (
         <div>
             <h1>Hello World!</h1>
-            <Button variant="default" size="sm" onClick={buttonClick}>
-                <X  />
+            <Button variant="outline" onClick={buttonClick}>
+                {/* <X  /> */}
+                Click me!
             </Button>
         </div>
     );
