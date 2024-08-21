@@ -67,3 +67,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+body {
+  width: 375px;
+  height: 600px;
+  border-color: hsl(var(--border));
+}

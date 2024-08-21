@@ -2,12 +2,14 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "../assets/globals.css";
 
-import { Button } from "@/components/ui/button";
+// Import custom components.
+import Header from "./components/header";
+import Converter from "./components/converter";
 
 const popup = (
     <div>
-        <h1 className="text-5xl text-green-500">Hello World!</h1>
-        <Button variant="outline" onClick={() => alert("Hello World!")}>Click</Button>
+        <Header />
+        <Converter />
     </div>
 );
 
