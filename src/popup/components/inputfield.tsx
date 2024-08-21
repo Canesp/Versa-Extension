@@ -35,9 +35,9 @@ function Inputfield() {
             <Popover open={open} onOpenChange={setOpen}>
                 <PopoverTrigger asChild className="border-0 border-l rounded-l-none w-full">
                     <Button variant="outline" role="combobox" aria-expanded={open} className="flex justify-between items-center w-full">
-                        <div className="w-full overflow-hidden">
+                        <span className="overflow-hidden text-ellipsis w-[120px] text-left">
                             {value ? currency.find((item) => item.value === value)?.label : "Select currency"}
-                        </div>
+                        </span>
 
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
