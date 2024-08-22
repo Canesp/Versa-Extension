@@ -6,39 +6,76 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 // Import custom components.
 import Inputfield from "./inputfield";
 
+interface Currency {
+    label: string;
+    value: string;
+}
+
 function Converter() {
     const [fromAmount, setFromAmount] = useState("1");
-    const [toAmount, setToAmount] = useState("");
-    const [fromCurrency, setFromCurrency] = useState("USD");
-    const [toCurrency, setToCurrency] = useState("EUR");
-    const [fromCurrencyName, setFromCurrencyName] = useState("United States Dollar");
+    const [toAmount, setToAmount] = useState("1");
+    const [fromCurrency, setFromCurrency] = useState("");
+    const [toCurrency, setToCurrency] = useState("");
+    const [fromCurrencyName, setFromCurrencyName] = useState("");
     const [toCurrencyName, setToCurrencyName] = useState("");
     const [toRate, setToRate] = useState(0);
     const [rates, setRates] = useState<any>(null);
 
-    const fetchRates = async () => {
-        chrome.storage.local.get(["rates"], (result) => {
+    const [currencies, setCurrencies] = React.useState<Currency[]>([]);
+
+    const fetchCurrencyData = async () => {
+        chrome.storage.local.get(["rates", "lastChosenCurrencies", "currencies"], (result) => {
             const rates = result.rates;
+            const lastUsedCurrencies = result.lastChosenCurrencies;
+            const currencies = result.currencies;
+
             if (rates) {
                 setRates(rates);
             } else {
                 console.error("No rates found.");
             }
+
+            if (lastUsedCurrencies) {
+                setFromCurrency(lastUsedCurrencies.from);
+                setToCurrency(lastUsedCurrencies.to);
+            } else {
+                console.error("No last used currencies found.");
+            }
+
+            if (currencies) {
+                const currencyDict = Object.entries(currencies).map(([key, value]) => ({ label: value, value: key }));
+                setCurrencies(currencyDict as Currency[]);
+            } else {
+                console.error("No currencies found.");
+            }
         });
     };
 
     useEffect(() => {
-        fetchRates();
+        fetchCurrencyData();
     }, []);
+
+    useEffect(() => {
+        if (rates && fromCurrency && toCurrency) {
+            toCurrencyChange(toCurrency);
+            setToCurrencyName(currencies.find((item) => item.value === toCurrency)?.label || "");
+            setFromCurrencyName(currencies.find((item) => item.value === fromCurrency)?.label || "");
+        }
+    }, [rates, fromCurrency, toCurrency]);
 
     const convertCurrency = (amount: number, to: string, from: string) => {
         const base = "EUR";
 
         if (rates) {
+
             if (from === base) {
                 return amount * rates.rates[to];
             } else if (to === base) {
                 return amount / rates.rates[from];
+            } else if (from === base && to === base) {
+                return amount;
+            } else if (from === to) {
+                return amount;
             } else {
                 const amountInBase = amount / rates.rates[from];
                 return amountInBase * rates.rates[to];
@@ -70,6 +107,14 @@ function Converter() {
         setToRate(convertCurrency(1, currency, fromCurrency));
     };
 
+    const fromCurrencyNameChange = (currencyName: string) => {
+        setFromCurrencyName(currencyName);
+    };
+
+    const toCurrencyNameChange = (currencyName: string) => {
+        setToCurrencyName(currencyName);
+    }
+
     return (
         <Card className="m-3">
             <CardHeader>
@@ -91,18 +136,20 @@ function Converter() {
                     selectedCurrency={fromCurrency} 
                     setSelectedCurrency={fromCurrencyChange}
                     selectedCurrencyName={fromCurrencyName}
-                    setSelectedCurrencyName={setFromCurrencyName} 
+                    setSelectedCurrencyName={fromCurrencyNameChange} 
                     amount={fromAmount} 
-                    setAmount={fromAmountChange} 
+                    setAmount={fromAmountChange}
+                    currencies={currencies} 
                 />
                 <div className="p-1 w-full" />
                 <Inputfield 
                     selectedCurrency={toCurrency}
                     setSelectedCurrency={toCurrencyChange}
                     selectedCurrencyName={toCurrencyName}
-                    setSelectedCurrencyName={setToCurrencyName} 
+                    setSelectedCurrencyName={toCurrencyNameChange} 
                     amount={toAmount} 
                     setAmount={toAmountChange}
+                    currencies={currencies}
                 />
             </CardContent>
 

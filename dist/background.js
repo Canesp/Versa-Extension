@@ -47,6 +47,15 @@ const storeRates = (rates) => {
         console.log("Rates stored in the local storage.");
     });
 };
+const storeDefaultCurrencies = () => {
+    const defaultCurrencies = {
+        "from": "EUR",
+        "to": "USD"
+    };
+    chrome.storage.local.set({ lastChosenCurrencies: defaultCurrencies }, () => {
+        console.log("Default currencies stored in the local storage.");
+    });
+};
 // Alarms for fetching the currencies and rates every 24 hours at around 16 CET (Central European Time).
 const setAlarms = () => {
     const now = new Date();
@@ -100,6 +109,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 });
 // Event listener for the installation of the extension.
 chrome.runtime.onInstalled.addListener(() => {
+    storeDefaultCurrencies();
     checkIfUpToDate();
     setAlarms();
 });

@@ -38722,27 +38722,52 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 function Converter() {
     const [fromAmount, setFromAmount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("1");
-    const [toAmount, setToAmount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-    const [fromCurrency, setFromCurrency] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("USD");
-    const [toCurrency, setToCurrency] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("EUR");
-    const [fromCurrencyName, setFromCurrencyName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("United States Dollar");
+    const [toAmount, setToAmount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("1");
+    const [fromCurrency, setFromCurrency] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+    const [toCurrency, setToCurrency] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+    const [fromCurrencyName, setFromCurrencyName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
     const [toCurrencyName, setToCurrencyName] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
     const [toRate, setToRate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
     const [rates, setRates] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-    const fetchRates = () => __awaiter(this, void 0, void 0, function* () {
-        chrome.storage.local.get(["rates"], (result) => {
+    const [currencies, setCurrencies] = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]);
+    const fetchCurrencyData = () => __awaiter(this, void 0, void 0, function* () {
+        chrome.storage.local.get(["rates", "lastChosenCurrencies", "currencies"], (result) => {
             const rates = result.rates;
+            const lastUsedCurrencies = result.lastChosenCurrencies;
+            const currencies = result.currencies;
             if (rates) {
                 setRates(rates);
             }
             else {
                 console.error("No rates found.");
             }
+            if (lastUsedCurrencies) {
+                setFromCurrency(lastUsedCurrencies.from);
+                setToCurrency(lastUsedCurrencies.to);
+            }
+            else {
+                console.error("No last used currencies found.");
+            }
+            if (currencies) {
+                const currencyDict = Object.entries(currencies).map(([key, value]) => ({ label: value, value: key }));
+                setCurrencies(currencyDict);
+            }
+            else {
+                console.error("No currencies found.");
+            }
         });
     });
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-        fetchRates();
+        fetchCurrencyData();
     }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        var _a, _b;
+        if (rates && fromCurrency && toCurrency) {
+            toCurrencyChange(toCurrency);
+            setToCurrencyName(((_a = currencies.find((item) => item.value === toCurrency)) === null || _a === void 0 ? void 0 : _a.label) || "");
+            setFromCurrencyName(((_b = currencies.find((item) => item.value === fromCurrency)) === null || _b === void 0 ? void 0 : _b.label) || "");
+        }
+    }, [rates, fromCurrency, toCurrency]);
     const convertCurrency = (amount, to, from) => {
         const base = "EUR";
         if (rates) {
@@ -38751,6 +38776,12 @@ function Converter() {
             }
             else if (to === base) {
                 return amount / rates.rates[from];
+            }
+            else if (from === base && to === base) {
+                return amount;
+            }
+            else if (from === to) {
+                return amount;
             }
             else {
                 const amountInBase = amount / rates.rates[from];
@@ -38779,6 +38810,12 @@ function Converter() {
         setToAmount(convertCurrency(parseFloat(fromAmount), currency, fromCurrency).toFixed(2));
         setToRate(convertCurrency(1, currency, fromCurrency));
     };
+    const fromCurrencyNameChange = (currencyName) => {
+        setFromCurrencyName(currencyName);
+    };
+    const toCurrencyNameChange = (currencyName) => {
+        setToCurrencyName(currencyName);
+    };
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.Card, { className: "m-3" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardHeader, null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
@@ -38791,9 +38828,9 @@ function Converter() {
                 toCurrencyName),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "text-xs text-muted-foreground" }, "15 aug. 18:54 UTC \u00B7 Ansvarsfriskrivning")),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: fromCurrency, setSelectedCurrency: fromCurrencyChange, selectedCurrencyName: fromCurrencyName, setSelectedCurrencyName: setFromCurrencyName, amount: fromAmount, setAmount: fromAmountChange }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: fromCurrency, setSelectedCurrency: fromCurrencyChange, selectedCurrencyName: fromCurrencyName, setSelectedCurrencyName: fromCurrencyNameChange, amount: fromAmount, setAmount: fromAmountChange, currencies: currencies }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "p-1 w-full" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: toCurrency, setSelectedCurrency: toCurrencyChange, selectedCurrencyName: toCurrencyName, setSelectedCurrencyName: setToCurrencyName, amount: toAmount, setAmount: toAmountChange })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: toCurrency, setSelectedCurrency: toCurrencyChange, selectedCurrencyName: toCurrencyName, setSelectedCurrencyName: toCurrencyNameChange, amount: toAmount, setAmount: toAmountChange, currencies: currencies })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardFooter, null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Card Footer"))));
 }
@@ -38859,15 +38896,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ui_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/ui/button */ "./src/assets/shadcn-ui/components/ui/button.tsx");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/chevrons-up-down.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/check.js");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 
 // Import Shadcn UI components.
 
@@ -38877,26 +38905,9 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 // Import Icons.
 
-function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount }) {
+function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount, currencies }) {
     var _a;
     const [open, setOpen] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false);
-    const [currencies, setCurrencies] = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]);
-    // Fetch the currencies from the local storage.
-    const fetchCurrencies = () => __awaiter(this, void 0, void 0, function* () {
-        chrome.storage.local.get(["currencies"], (result) => {
-            const currencies = result.currencies;
-            if (currencies) {
-                const currencyDict = Object.entries(currencies).map(([key, value]) => ({ label: value, value: key }));
-                setCurrencies(currencyDict);
-            }
-            else {
-                console.error("No currencies found.");
-            }
-        });
-    });
-    react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(() => {
-        fetchCurrencies();
-    }, []);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "w-full rounded-md border border-input flex items-center focus-within:ring-2 focus-within:ring-ring" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_input__WEBPACK_IMPORTED_MODULE_4__.Input, { type: "number", placeholder: "Amount", value: amount, onChange: (e) => setAmount(e.target.value), className: "border-none w-[120px] focus-visible:ring-0 focus-visible:ring-offset-0" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_popover__WEBPACK_IMPORTED_MODULE_3__.Popover, { open: open, onOpenChange: setOpen },

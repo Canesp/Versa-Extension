@@ -24,29 +24,13 @@ interface InputfieldProps {
     setSelectedCurrencyName: (value: string) => void;
     amount: string;
     setAmount: (value: string) => void;
+    currencies: Currency[];
 }
 
-function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount }: InputfieldProps) {
+function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount, currencies }: InputfieldProps) {
 
     const [open, setOpen] = React.useState(false);
-    const [currencies, setCurrencies] = React.useState<Currency[]>([]);
-
-    // Fetch the currencies from the local storage.
-    const fetchCurrencies = async () => {
-        chrome.storage.local.get(["currencies"], (result) => {
-            const currencies = result.currencies;
-            if (currencies) {
-                const currencyDict = Object.entries(currencies).map(([key, value]) => ({ label: value, value: key }));
-                setCurrencies(currencyDict as Currency[]);
-            } else {
-                console.error("No currencies found.");
-            }
-        });
-    };
-
-    React.useEffect(() => {
-        fetchCurrencies();
-    }, []);
+    
     
     return (
         <div className="w-full rounded-md border border-input flex items-center focus-within:ring-2 focus-within:ring-ring">
