@@ -38730,11 +38730,34 @@ function Converter() {
     const [toRate, setToRate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
     const [rates, setRates] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [currencies, setCurrencies] = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]);
+    const [fetchTime, setFetchTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const timestampToDate = (timestamp) => {
+        const date = new Date(timestamp);
+        const timeData = {
+            day: date.getDate(),
+            month: date.getMonth() + 1,
+            hour: date.getHours(),
+            minute: date.getMinutes(),
+            timezone: date.getTimezoneOffset()
+        };
+        setFetchTime(timeData);
+    };
+    const storeLastUsedCurrencies = (from, to) => {
+        const lastUsedCurrencies = {
+            "from": from,
+            "to": to
+        };
+        chrome.storage.local.set({ lastChosenCurrencies: lastUsedCurrencies }, () => {
+            console.log("Default currencies stored in the local storage.");
+        });
+    };
     const fetchCurrencyData = () => __awaiter(this, void 0, void 0, function* () {
-        chrome.storage.local.get(["rates", "lastChosenCurrencies", "currencies"], (result) => {
+        chrome.storage.local.get(["rates", "lastChosenCurrencies", "currencies", "lastFetch"], (result) => {
             const rates = result.rates;
             const lastUsedCurrencies = result.lastChosenCurrencies;
             const currencies = result.currencies;
+            const lastFetch = result.lastFetch;
+            console.log("Last fetch: ", lastFetch);
             if (rates) {
                 setRates(rates);
             }
@@ -38804,11 +38827,13 @@ function Converter() {
         setFromCurrency(currency);
         setToAmount(convertCurrency(parseFloat(fromAmount), toCurrency, currency).toFixed(2));
         setToRate(convertCurrency(1, toCurrency, currency));
+        storeLastUsedCurrencies(currency, toCurrency);
     };
     const toCurrencyChange = (currency) => {
         setToCurrency(currency);
         setToAmount(convertCurrency(parseFloat(fromAmount), currency, fromCurrency).toFixed(2));
         setToRate(convertCurrency(1, currency, fromCurrency));
+        storeLastUsedCurrencies(fromCurrency, currency);
     };
     const fromCurrencyNameChange = (currencyName) => {
         setFromCurrencyName(currencyName);
