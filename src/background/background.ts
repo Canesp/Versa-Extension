@@ -89,8 +89,6 @@ const checkIfUpToDate = async () => {
             console.log("Currencies: ", currencies);
         }
     });
-
-
 };
 
 // Event listener for the alarms.

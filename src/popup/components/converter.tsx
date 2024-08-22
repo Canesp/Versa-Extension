@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 
 // Import Shadcn-ui components.
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +7,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Inputfield from "./inputfield";
 
 function Converter() {
+    const [input1Amount, setAmount1] = useState("");
+    const [input2Amount, setAmount2] = useState("");
+    const [selectedCurrency1, setSelectedCurrency1] = useState("");
+    const [selectedCurrency2, setSelectedCurrency2] = useState("");
+
     return (
         <Card className="m-3">
             <CardHeader>
@@ -24,9 +29,9 @@ function Converter() {
             </CardHeader>
 
             <CardContent>
-                <Inputfield />
+                <Inputfield selectedCurrency={selectedCurrency1} setSelectedCurrency={setSelectedCurrency1} amount={input1Amount} setAmount={setAmount1} />
                 <div className="p-1 w-full" />
-                <Inputfield />
+                <Inputfield selectedCurrency={selectedCurrency2} setSelectedCurrency={setSelectedCurrency2} amount={input2Amount} setAmount={setAmount2} />
             </CardContent>
 
             <CardFooter>
