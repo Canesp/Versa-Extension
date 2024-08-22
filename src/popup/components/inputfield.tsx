@@ -20,11 +20,13 @@ interface Currency {
 interface InputfieldProps {
     selectedCurrency: string;
     setSelectedCurrency: (value: string) => void;
+    selectedCurrencyName: string;
+    setSelectedCurrencyName: (value: string) => void;
     amount: string;
     setAmount: (value: string) => void;
 }
 
-function Inputfield({ selectedCurrency, setSelectedCurrency, amount, setAmount }: InputfieldProps) {
+function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount }: InputfieldProps) {
 
     const [open, setOpen] = React.useState(false);
     const [currencies, setCurrencies] = React.useState<Currency[]>([]);
@@ -73,6 +75,7 @@ function Inputfield({ selectedCurrency, setSelectedCurrency, amount, setAmount }
                                         key={currency.value}
                                         onSelect={() => {
                                             setSelectedCurrency(currency.value);
+                                            setSelectedCurrencyName(currency.label);
                                             setOpen(false);
                                         }}
                                    >
