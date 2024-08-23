@@ -38720,6 +38720,8 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 // Import custom components.
 
+;
+;
 function Converter() {
     const [fromAmount, setFromAmount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("1");
     const [toAmount, setToAmount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("1");
@@ -38730,15 +38732,25 @@ function Converter() {
     const [toRate, setToRate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
     const [rates, setRates] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [currencies, setCurrencies] = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]);
-    const [fetchTime, setFetchTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [lastFetch, setLastFetch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [fetchTime, setFetchTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({ day: 0, month: "0", hour: "0", minute: "0", timezone: "0" });
     const timestampToDate = (timestamp) => {
         const date = new Date(timestamp);
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const month = months[date.getMonth()];
+        const hour = date.getHours().toString().padStart(2, "0");
+        const minute = date.getMinutes().toString().padStart(2, "0");
+        const timezoneOffset = date.getTimezoneOffset();
+        const timezoneHours = Math.abs(Math.floor(timezoneOffset / 60)).toString().padStart(2, "0");
+        const timezoneMinutes = (timezoneOffset % 60).toString().padStart(2, "0");
+        const timezoneSign = timezoneOffset > 0 ? "-" : "+";
+        const timezone = `GMT${timezoneSign}${timezoneHours}:${timezoneMinutes}`;
         const timeData = {
             day: date.getDate(),
-            month: date.getMonth() + 1,
-            hour: date.getHours(),
-            minute: date.getMinutes(),
-            timezone: date.getTimezoneOffset()
+            month: month,
+            hour: hour,
+            minute: minute,
+            timezone: timezone
         };
         setFetchTime(timeData);
     };
@@ -38778,6 +38790,12 @@ function Converter() {
             else {
                 console.error("No currencies found.");
             }
+            if (lastFetch) {
+                setLastFetch(lastFetch);
+            }
+            else {
+                console.error("No last fetch found.");
+            }
         });
     });
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -38785,12 +38803,14 @@ function Converter() {
     }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         var _a, _b;
-        if (rates && fromCurrency && toCurrency) {
+        if (rates && fromCurrency && toCurrency && lastFetch) {
             toCurrencyChange(toCurrency);
             setToCurrencyName(((_a = currencies.find((item) => item.value === toCurrency)) === null || _a === void 0 ? void 0 : _a.label) || "");
             setFromCurrencyName(((_b = currencies.find((item) => item.value === fromCurrency)) === null || _b === void 0 ? void 0 : _b.label) || "");
+            timestampToDate(lastFetch);
         }
-    }, [rates, fromCurrency, toCurrency]);
+    }, [rates, fromCurrency, toCurrency, lastFetch]);
+    console.log(fetchTime);
     const convertCurrency = (amount, to, from) => {
         const base = "EUR";
         if (rates) {
@@ -38851,7 +38871,16 @@ function Converter() {
                 toRate.toFixed(2),
                 " ",
                 toCurrencyName),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "text-xs text-muted-foreground" }, "15 aug. 18:54 UTC \u00B7 Ansvarsfriskrivning")),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "text-xs text-muted-foreground" },
+                fetchTime.day,
+                " ",
+                fetchTime.month,
+                " ",
+                fetchTime.hour,
+                ":",
+                fetchTime.minute,
+                " ",
+                fetchTime.timezone)),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: fromCurrency, setSelectedCurrency: fromCurrencyChange, selectedCurrencyName: fromCurrencyName, setSelectedCurrencyName: fromCurrencyNameChange, amount: fromAmount, setAmount: fromAmountChange, currencies: currencies }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "p-1 w-full" }),

@@ -9,7 +9,15 @@ import Inputfield from "./inputfield";
 interface Currency {
     label: string;
     value: string;
-}
+};
+
+interface FetchTime {
+    day: number;
+    month: string;
+    hour: string;
+    minute: string;
+    timezone: string;
+};
 
 function Converter() {
     const [fromAmount, setFromAmount] = useState("1");
@@ -22,16 +30,27 @@ function Converter() {
     const [rates, setRates] = useState<any>(null);
 
     const [currencies, setCurrencies] = React.useState<Currency[]>([]);
-    const [fetchTime, setFetchTime] = useState<any>(null);
+    const [lastFetch, setLastFetch] = useState<any>(null);
+    const [fetchTime, setFetchTime] = useState<FetchTime>({ day: 0, month: "0", hour: "0", minute: "0", timezone: "0" });
 
     const timestampToDate = (timestamp: number) => {
         const date = new Date(timestamp);
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const month = months[date.getMonth()];
+        const hour = date.getHours().toString().padStart(2, "0");
+        const minute = date.getMinutes().toString().padStart(2, "0");
+        const timezoneOffset = date.getTimezoneOffset();
+        const timezoneHours = Math.abs(Math.floor(timezoneOffset / 60)).toString().padStart(2, "0");
+        const timezoneMinutes = (timezoneOffset % 60).toString().padStart(2, "0");
+        const timezoneSign = timezoneOffset > 0 ? "-" : "+";
+        const timezone = `GMT${timezoneSign}${timezoneHours}:${timezoneMinutes}`;
+
         const timeData = {
             day: date.getDate(),
-            month: date.getMonth() + 1,
-            hour: date.getHours(),
-            minute: date.getMinutes(),
-            timezone: date.getTimezoneOffset()
+            month: month,
+            hour: hour,
+            minute: minute,
+            timezone: timezone
         };
 
         setFetchTime(timeData);
@@ -76,6 +95,12 @@ function Converter() {
             } else {
                 console.error("No currencies found.");
             }
+
+            if (lastFetch) {
+                setLastFetch(lastFetch);
+            } else {
+                console.error("No last fetch found.");
+            }
         });
     };
 
@@ -84,12 +109,15 @@ function Converter() {
     }, []);
 
     useEffect(() => {
-        if (rates && fromCurrency && toCurrency) {
+        if (rates && fromCurrency && toCurrency && lastFetch) {
             toCurrencyChange(toCurrency);
             setToCurrencyName(currencies.find((item) => item.value === toCurrency)?.label || "");
             setFromCurrencyName(currencies.find((item) => item.value === fromCurrency)?.label || "");
+            timestampToDate(lastFetch);
         }
-    }, [rates, fromCurrency, toCurrency]);
+    }, [rates, fromCurrency, toCurrency, lastFetch]);
+
+    console.log(fetchTime);
 
     const convertCurrency = (amount: number, to: string, from: string) => {
         const base = "EUR";
@@ -157,7 +185,7 @@ function Converter() {
                 </div>
 
                 <div className="text-xs text-muted-foreground">
-                    15 aug. 18:54 UTC · Ansvarsfriskrivning
+                    {fetchTime.day} {fetchTime.month} {fetchTime.hour}:{fetchTime.minute} {fetchTime.timezone}
                 </div>
             </CardHeader>
 
