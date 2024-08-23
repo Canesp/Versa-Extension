@@ -23,6 +23,18 @@ const fetchRates = async () => {
     return data;
 };
 
+const fetchHistoricalRates = async () => {
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    const formattedDate = oneYearAgo.toISOString().split('T')[0];
+
+    const response = await fetch(`${base_API}${formattedDate}..`); // will fetch the rates from a year ago to the current date.
+    const data = await response.json();
+
+    console.log("Historical rates fetched: ", data);
+    return data;
+};
+
 // Storing the currencies and rates in the local storage.
 const storeCurrencies = (currencies: any) => {
     chrome.storage.local.set({ currencies:currencies }, () => {
@@ -34,6 +46,12 @@ const storeRates = (rates: any) => {
     const timestamp = Date.now();
     chrome.storage.local.set({ rates:rates, lastFetch: timestamp }, () => {
         console.log("Rates stored in the local storage.");
+    });
+};
+
+const storeHistoricalRates = (historicalRates: any) => {
+    chrome.storage.local.set({ historicalRates: historicalRates }, () => {
+        console.log("Historical rates stored in the local storage.");
     });
 };
 
@@ -80,7 +98,7 @@ const checkIfUpToDate = async () => {
     const oneDayInMs = 86400000;
     const now = Date.now();
 
-    chrome.storage.local.get(["lastFetch", "currencies", "rates"], (result) => {
+    chrome.storage.local.get(["lastFetch", "currencies", "rates", "historicalRates"], (result) => {
         const lastFetch = result.lastFetch;
 
         if (!lastFetch || now - lastFetch > oneDayInMs) {
@@ -98,6 +116,14 @@ const checkIfUpToDate = async () => {
         } else {
             console.log("Currencies are up to date.");
             console.log("Currencies: ", currencies);
+        }
+
+        const historicalRates = result.historicalRates;
+
+        if (!historicalRates || now - lastFetch > oneDayInMs) {
+            fetchHistoricalRates().then(storeHistoricalRates).catch(console.error);
+        } else {
+            console.log("Historical rates are up to date.");
         }
     });
 };

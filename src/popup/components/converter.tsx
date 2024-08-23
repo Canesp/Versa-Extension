@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 // Import Shadcn-ui components.
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 // Import custom components.
 import Inputfield from "./inputfield";
+import Chart from './chart';
 
 interface Currency {
     label: string;
@@ -212,7 +215,7 @@ function Converter() {
             </CardContent>
 
             <CardFooter>
-                <p>Card Footer</p>
+                <Chart from={fromCurrency} to={toCurrency} />
             </CardFooter>
         </Card>
     )
