@@ -21,26 +21,12 @@ function Chart( { from, to }: ChartProps ) {
 
     const [historicalRates, setHistoricalRates] = useState<any>({});
     const [chartData, setChartData] = useState<chartData[]>([]);
-    const [selectedRange, setSelectedRange] = useState<string>("30");
+    const [selectedRange, setSelectedRange] = useState<string>("365");
+    const [chartConfig, setChartConfig] = useState<ChartConfig>({ rates: { label: "USD", color: "hsl(var(--chart-2))" } });
 
     const getColor = (rate1: number, rate2: number) => {
         return rate1 > rate2 ? "hsl(var(--chart-1))" : "hsl(var(--chart-2))";
     };
-
-    /* const chartConfig = {
-        rates: {
-            label: to,
-            color: getColor(chartData[0].rate, chartData[chartData.length - 1].rate)
-
-        }
-    } satisfies ChartConfig; */
-
-    const chartConfig = {
-        rates: {
-            label: "USD",
-            color: "hsl(var(--chart-1))"
-        }
-    } satisfies ChartConfig;
 
     const fetchHistoricalRates = async () => {
         chrome.storage.local.get("historicalRates", (data) => {
@@ -66,13 +52,15 @@ function Chart( { from, to }: ChartProps ) {
                     rate = historicalRates.rates[date][to];
                 } else if (to === "EUR") {
                     rate = 1 / historicalRates.rates[date][from];
-                } else {
+                } else if (from === "EUR" && to === "EUR") {
+                    rate = 1;
+                }else {
                     rate = historicalRates.rates[date][to] / historicalRates.rates[date][from];
                 } 
 
                 filteredData.push({
                     date: date,
-                    rate: rate
+                    rate: Number(rate)
                 });
             }
         }
@@ -93,16 +81,33 @@ function Chart( { from, to }: ChartProps ) {
 
     const dateFormatted = (date: string) => {
         const dateObj = new Date(date);
+        const currentDate = new Date();
         const year = dateObj.getFullYear();
         const month = dateObj.toLocaleString("default", { month: "short" });
+        const day = dateObj.getDate();
 
-        return `${year} ${month}`;
+        if (year !== currentDate.getFullYear()) {
+            return `${year} ${month}`;
+        } else {
+            return `${day} ${month}`;
+        }
     };
 
     const updateChartData = () => {
         const filteredData = filterHistoricalRates(historicalRates);
         setChartData(filteredData);
     }; 
+
+    const updateChartConfig = () => {
+        const color = getColor(chartData[0].rate, chartData[chartData.length - 1].rate);
+
+        setChartConfig({
+            rates: {
+                label: to,
+                color: color
+            }
+        });
+    };
 
     useEffect(() => {
         fetchHistoricalRates();
@@ -112,7 +117,13 @@ function Chart( { from, to }: ChartProps ) {
         updateChartData();
     }, [historicalRates, selectedRange, from, to]);
 
-    console.log("Chart data updated: ", chartData);
+    useEffect(() => {
+        if (chartData.length > 0) {
+            updateChartConfig();
+        }
+    }, [chartData, from, to]);
+
+    console.log("Chart config updated: ", chartConfig);
 
     return (
         <Card className="w-full">
@@ -132,7 +143,7 @@ function Chart( { from, to }: ChartProps ) {
                     <AreaChart accessibilityLayer data={chartData} margin={{left: 6, right: 6}}>
                         <CartesianGrid vertical={false} />
                         <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => dateFormatted(value)}/>
-                        <YAxis tickLine={false} axisLine={false} tickMargin={8} tickCount={4} domain={domainValues(chartData)}/>
+                        <YAxis dataKey="rate" tickLine={false} axisLine={false} tickMargin={8} tickCount={4} domain={domainValues(chartData)} tickFormatter={(value) => value.toFixed(3)}/>
                         <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line"/>}/>
                         <Area dataKey={"rate"} type={"linear"} fill="var(--color-rates)" fillOpacity={0.4} stroke="var(--color-rates)"/> 
                     </AreaChart>
