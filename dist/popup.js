@@ -1068,27 +1068,27 @@ video {
     --chart-5: 27 87% 67%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+  [data-theme='dark'] {
+    --background: 240, 10%, 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 12 76% 61%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
@@ -1290,9 +1290,6 @@ video {
 .mr-2 {
   margin-right: 0.5rem;
 }
-.mr-1 {
-  margin-right: 0.25rem;
-}
 .block {
   display: block;
 }
@@ -1335,6 +1332,9 @@ video {
 .h-5 {
   height: 1.25rem;
 }
+.h-6 {
+  height: 1.5rem;
+}
 .h-7 {
   height: 1.75rem;
 }
@@ -1353,9 +1353,6 @@ video {
 .h-px {
   height: 1px;
 }
-.h-6 {
-  height: 1.5rem;
-}
 .max-h-96 {
   max-height: 24rem;
 }
@@ -1370,6 +1367,9 @@ video {
 }
 .w-10 {
   width: 2.5rem;
+}
+.w-11 {
+  width: 2.75rem;
 }
 .w-2 {
   width: 0.5rem;
@@ -1392,6 +1392,9 @@ video {
 .w-72 {
   width: 18rem;
 }
+.w-9 {
+  width: 2.25rem;
+}
 .w-\\[100px\\] {
   width: 100px;
 }
@@ -1403,12 +1406,6 @@ video {
 }
 .w-full {
   width: 100%;
-}
-.w-11 {
-  width: 2.75rem;
-}
-.w-9 {
-  width: 2.25rem;
 }
 .min-w-\\[8rem\\] {
   min-width: 8rem;
@@ -1486,15 +1483,15 @@ video {
 .gap-4 {
   gap: 1rem;
 }
-.space-y-1\\.5 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
-}
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-y-1\\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
 }
 .overflow-hidden {
   overflow: hidden;
@@ -1536,11 +1533,11 @@ video {
 .border-0 {
   border-width: 0px;
 }
-.border-\\[1\\.5px\\] {
-  border-width: 1.5px;
-}
 .border-2 {
   border-width: 2px;
+}
+.border-\\[1\\.5px\\] {
+  border-width: 1.5px;
 }
 .border-b {
   border-bottom-width: 1px;
@@ -1614,6 +1611,9 @@ video {
 .p-1 {
   padding: 0.25rem;
 }
+.p-2 {
+  padding: 0.5rem;
+}
 .p-3 {
   padding: 0.75rem;
 }
@@ -1622,9 +1622,6 @@ video {
 }
 .p-6 {
   padding: 1.5rem;
-}
-.p-2 {
-  padding: 0.5rem;
 }
 .px-2 {
   padding-left: 0.5rem;
@@ -2016,10 +2013,6 @@ body {
   opacity: 0.7;
 }
 
-.peer:disabled ~ .peer-disabled\\:opacity-50 {
-  opacity: 0.5;
-}
-
 .data-\\[disabled\\=true\\]\\:pointer-events-none[data-disabled="true"] {
   pointer-events: none;
 }
@@ -2062,16 +2055,16 @@ body {
   background-color: hsl(var(--accent));
 }
 
+.data-\\[state\\=checked\\]\\:bg-primary[data-state="checked"] {
+  background-color: hsl(var(--primary));
+}
+
 .data-\\[state\\=on\\]\\:bg-accent[data-state="on"] {
   background-color: hsl(var(--accent));
 }
 
 .data-\\[state\\=open\\]\\:bg-accent[data-state="open"] {
   background-color: hsl(var(--accent));
-}
-
-.data-\\[state\\=checked\\]\\:bg-primary[data-state="checked"] {
-  background-color: hsl(var(--primary));
 }
 
 .data-\\[state\\=unchecked\\]\\:bg-input[data-state="unchecked"] {
@@ -2082,16 +2075,16 @@ body {
   color: hsl(var(--accent-foreground));
 }
 
+.data-\\[state\\=checked\\]\\:text-primary-foreground[data-state="checked"] {
+  color: hsl(var(--primary-foreground));
+}
+
 .data-\\[state\\=on\\]\\:text-accent-foreground[data-state="on"] {
   color: hsl(var(--accent-foreground));
 }
 
 .data-\\[state\\=open\\]\\:text-muted-foreground[data-state="open"] {
   color: hsl(var(--muted-foreground));
-}
-
-.data-\\[state\\=checked\\]\\:text-primary-foreground[data-state="checked"] {
-  color: hsl(var(--primary-foreground));
 }
 
 .data-\\[disabled\\=true\\]\\:opacity-50[data-disabled="true"] {
@@ -2337,7 +2330,7 @@ body {
 
 .\\[\\&_\\[cmdk-item\\]_svg\\]\\:w-5 [cmdk-item] svg {
   width: 1.25rem;
-}`, "",{"version":3,"sources":["webpack://./src/assets/globals.css"],"names":[],"mappings":"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","sourcesContent":["@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n    --background: 0 0% 100%;\n    --foreground: 222.2 84% 4.9%;\n    --card: 0 0% 100%;\n    --card-foreground: 222.2 84% 4.9%;\n    --popover: 0 0% 100%;\n    --popover-foreground: 222.2 84% 4.9%;\n    --primary: 222.2 47.4% 11.2%;\n    --primary-foreground: 210 40% 98%;\n    --secondary: 210 40% 96.1%;\n    --secondary-foreground: 222.2 47.4% 11.2%;\n    --muted: 210 40% 96.1%;\n    --muted-foreground: 215.4 16.3% 46.9%;\n    --accent: 210 40% 96.1%;\n    --accent-foreground: 222.2 47.4% 11.2%;\n    --destructive: 0 84.2% 60.2%;\n    --destructive-foreground: 210 40% 98%;\n    --border: 214.3 31.8% 91.4%;\n    --input: 214.3 31.8% 91.4%;\n    --ring: 222.2 84% 4.9%;\n    --radius: 0.5rem;\n    --chart-1: 12 76% 61%;\n    --chart-2: 173 58% 39%;\n    --chart-3: 197 37% 24%;\n    --chart-4: 43 74% 66%;\n    --chart-5: 27 87% 67%;\n  }\n\n  .dark {\n    --background: 222.2 84% 4.9%;\n    --foreground: 210 40% 98%;\n    --card: 222.2 84% 4.9%;\n    --card-foreground: 210 40% 98%;\n    --popover: 222.2 84% 4.9%;\n    --popover-foreground: 210 40% 98%;\n    --primary: 210 40% 98%;\n    --primary-foreground: 222.2 47.4% 11.2%;\n    --secondary: 217.2 32.6% 17.5%;\n    --secondary-foreground: 210 40% 98%;\n    --muted: 217.2 32.6% 17.5%;\n    --muted-foreground: 215 20.2% 65.1%;\n    --accent: 217.2 32.6% 17.5%;\n    --accent-foreground: 210 40% 98%;\n    --destructive: 0 62.8% 30.6%;\n    --destructive-foreground: 210 40% 98%;\n    --border: 217.2 32.6% 17.5%;\n    --input: 217.2 32.6% 17.5%;\n    --ring: 212.7 26.8% 83.9%;\n    --chart-1: 220 70% 50%;\n    --chart-2: 160 60% 45%;\n    --chart-3: 30 80% 55%;\n    --chart-4: 280 65% 60%;\n    --chart-5: 340 75% 55%;\n  }\n}\n\n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}\n\nbody {\n  width: 360px;\n  height: 600px;\n  border-color: hsl(var(--border));\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/assets/globals.css"],"names":[],"mappings":"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","sourcesContent":["@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n    --background: 0 0% 100%;\n    --foreground: 222.2 84% 4.9%;\n    --card: 0 0% 100%;\n    --card-foreground: 222.2 84% 4.9%;\n    --popover: 0 0% 100%;\n    --popover-foreground: 222.2 84% 4.9%;\n    --primary: 222.2 47.4% 11.2%;\n    --primary-foreground: 210 40% 98%;\n    --secondary: 210 40% 96.1%;\n    --secondary-foreground: 222.2 47.4% 11.2%;\n    --muted: 210 40% 96.1%;\n    --muted-foreground: 215.4 16.3% 46.9%;\n    --accent: 210 40% 96.1%;\n    --accent-foreground: 222.2 47.4% 11.2%;\n    --destructive: 0 84.2% 60.2%;\n    --destructive-foreground: 210 40% 98%;\n    --border: 214.3 31.8% 91.4%;\n    --input: 214.3 31.8% 91.4%;\n    --ring: 222.2 84% 4.9%;\n    --radius: 0.5rem;\n    --chart-1: 12 76% 61%;\n    --chart-2: 173 58% 39%;\n    --chart-3: 197 37% 24%;\n    --chart-4: 43 74% 66%;\n    --chart-5: 27 87% 67%;\n  }\n\n  [data-theme='dark'] {\n    --background: 240, 10%, 3.9%;\n    --foreground: 0 0% 98%;\n    --card: 240 10% 3.9%;\n    --card-foreground: 0 0% 98%;\n    --popover: 240 10% 3.9%;\n    --popover-foreground: 0 0% 98%;\n    --primary: 0 0% 98%;\n    --primary-foreground: 240 5.9% 10%;\n    --secondary: 240 3.7% 15.9%;\n    --secondary-foreground: 0 0% 98%;\n    --muted: 240 3.7% 15.9%;\n    --muted-foreground: 240 5% 64.9%;\n    --accent: 240 3.7% 15.9%;\n    --accent-foreground: 0 0% 98%;\n    --destructive: 0 62.8% 30.6%;\n    --destructive-foreground: 0 0% 98%;\n    --border: 240 3.7% 15.9%;\n    --input: 240 3.7% 15.9%;\n    --ring: 240 4.9% 83.9%;\n    --chart-1: 12 76% 61%;\n    --chart-2: 160 60% 45%;\n    --chart-3: 30 80% 55%;\n    --chart-4: 280 65% 60%;\n    --chart-5: 340 75% 55%;\n  }\n}\n\n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}\n\nbody {\n  width: 360px;\n  height: 600px;\n  border-color: hsl(var(--border));\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12554,6 +12547,37 @@ const Info = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("I
 
 /***/ }),
 
+/***/ "./node_modules/lucide-react/dist/esm/icons/moon.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/moon.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Moon)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.435.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const Moon = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("Moon", [
+  ["path", { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z", key: "a7tn18" }]
+]);
+
+
+//# sourceMappingURL=moon.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/lucide-react/dist/esm/icons/search.js":
 /*!************************************************************!*\
   !*** ./node_modules/lucide-react/dist/esm/icons/search.js ***!
@@ -12582,6 +12606,45 @@ const Search = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
 
 
 //# sourceMappingURL=search.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/sun.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/sun.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Sun)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.435.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const Sun = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("Sun", [
+  ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
+  ["path", { d: "M12 2v2", key: "tus03m" }],
+  ["path", { d: "M12 20v2", key: "1lh1kg" }],
+  ["path", { d: "m4.93 4.93 1.41 1.41", key: "149t6j" }],
+  ["path", { d: "m17.66 17.66 1.41 1.41", key: "ptbguv" }],
+  ["path", { d: "M2 12h2", key: "1t8f8n" }],
+  ["path", { d: "M20 12h2", key: "1q8mjw" }],
+  ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
+  ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
+]);
+
+
+//# sourceMappingURL=sun.js.map
 
 
 /***/ }),
@@ -66656,7 +66719,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_ui_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/ui/button */ "./src/assets/shadcn-ui/components/ui/button.tsx");
 /* harmony import */ var _components_ui_separator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/ui/separator */ "./src/assets/shadcn-ui/components/ui/separator.tsx");
-/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/x.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/sun.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/moon.js");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/x.js");
 
 // Import Shadcn-ui components.
 
@@ -66667,12 +66732,52 @@ __webpack_require__.r(__webpack_exports__);
 function windowClose() {
     window.close();
 }
+function toggleTheme() {
+    const root = document.documentElement;
+    const theme = root.getAttribute("data-theme");
+    if (theme === "dark") {
+        root.setAttribute("data-theme", "light");
+    }
+    else {
+        root.setAttribute("data-theme", "dark");
+    }
+}
+;
 function Header() {
+    const [theme, setTheme] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("light");
+    function toggleTheme() {
+        const root = document.documentElement;
+        const theme = root.getAttribute("data-theme");
+        if (theme === "dark") {
+            root.setAttribute("data-theme", "light");
+            setTheme("light");
+        }
+        else {
+            root.setAttribute("data-theme", "dark");
+            setTheme("dark");
+        }
+    }
+    ;
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        chrome.storage.local.get("theme", (data) => {
+            if (data.theme) {
+                setTheme(data.theme);
+            }
+        });
+    }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        chrome.storage.local.set({ theme: theme });
+    }, [theme]);
+    if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+    }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "flex items-center justify-between p-2" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { className: "text-2xl font-bold" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "icon", className: "h-7 w-7", onClick: windowClose },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_3__["default"], { size: 16 }))),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "flex items-center space-x-2" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "icon", className: "h-7 w-7", onClick: toggleTheme }, theme === "light" ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_3__["default"], { size: 15, className: "opacity-50" }) : react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_4__["default"], { size: 16 })),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_1__.Button, { variant: "ghost", size: "icon", className: "h-7 w-7", onClick: windowClose },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], { size: 16 })))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_separator__WEBPACK_IMPORTED_MODULE_2__.Separator, { className: "h-[1px] bg-border" })));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);

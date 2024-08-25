@@ -9,6 +9,8 @@ import { Label } from "@/components/ui/label";
 // Import the Icons.
 import { Heart, Info } from "lucide-react";
 
+
+
 function Footer() {
     return (
         <div className="flex items-center justify-between p-3">

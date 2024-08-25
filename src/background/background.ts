@@ -66,6 +66,14 @@ const storeDefaultCurrencies = () => {
     });
 };
 
+const storeDefaultTheme = () => {
+    const defaultTheme = "light";
+
+    chrome.storage.local.set({ theme: defaultTheme }, () => {
+        console.log("Default theme stored in the local storage.");
+    });
+};
+
 // Alarms for fetching the currencies and rates every 24 hours at around 16 CET (Central European Time).
 const setAlarms = () => {
     const now = new Date();
@@ -139,6 +147,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 // Event listener for the installation of the extension.
 chrome.runtime.onInstalled.addListener(() => {
     storeDefaultCurrencies();
+    storeDefaultTheme();
     checkIfUpToDate();
     setAlarms();
 });
