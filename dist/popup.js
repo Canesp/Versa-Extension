@@ -66303,9 +66303,9 @@ function Converter() {
                 " ",
                 fetchTime.timezone)),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: fromCurrency, setSelectedCurrency: fromCurrencyChange, selectedCurrencyName: fromCurrencyName, setSelectedCurrencyName: fromCurrencyNameChange, amount: fromAmount, setAmount: fromAmountChange, currencies: currencies }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: fromCurrency, setSelectedCurrency: fromCurrencyChange, selectedCurrencyName: fromCurrencyName, setSelectedCurrencyName: fromCurrencyNameChange, amount: fromAmount, setAmount: fromAmountChange, currencies: currencies, usedCurrency: toCurrency }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "p-1 w-full" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: toCurrency, setSelectedCurrency: toCurrencyChange, selectedCurrencyName: toCurrencyName, setSelectedCurrencyName: toCurrencyNameChange, amount: toAmount, setAmount: toAmountChange, currencies: currencies })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: toCurrency, setSelectedCurrency: toCurrencyChange, selectedCurrencyName: toCurrencyName, setSelectedCurrencyName: toCurrencyNameChange, amount: toAmount, setAmount: toAmountChange, currencies: currencies, usedCurrency: fromCurrency })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardFooter, null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_chart__WEBPACK_IMPORTED_MODULE_3__["default"], { from: fromCurrency, to: toCurrency }))));
 }
@@ -66382,7 +66382,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Import Icons.
 
-function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount, currencies }) {
+function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount, currencies, usedCurrency }) {
     var _a;
     const [open, setOpen] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "w-full rounded-md border border-input flex items-center focus-within:ring-2 focus-within:ring-ring" },
@@ -66390,20 +66390,20 @@ function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyNam
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_popover__WEBPACK_IMPORTED_MODULE_3__.Popover, { open: open, onOpenChange: setOpen },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_popover__WEBPACK_IMPORTED_MODULE_3__.PopoverTrigger, { asChild: true, className: "border-0 border-l rounded-l-none w-full" },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_5__.Button, { variant: "outline", role: "combobox", "aria-expanded": open, className: "flex justify-between items-center w-full" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "overflow-hidden text-ellipsis w-[100px] text-left" }, selectedCurrency ? (_a = currencies.find((item) => item.value === selectedCurrency)) === null || _a === void 0 ? void 0 : _a.label : "Select currency"),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "overflow-hidden text-ellipsis w-[100px] text-left" }, selectedCurrency ? (_a = currencies.find((item) => item.value === selectedCurrency && item.value !== usedCurrency)) === null || _a === void 0 ? void 0 : _a.label : "Select currency"),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_6__["default"], { className: "ml-2 h-4 w-4 shrink-0 opacity-50" }))),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_popover__WEBPACK_IMPORTED_MODULE_3__.PopoverContent, { className: "w-full p-0" },
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.Command, null,
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.CommandInput, { placeholder: "Search currency" }),
                     react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.CommandList, null,
                         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.CommandEmpty, null, "No results found"),
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.CommandGroup, null, currencies.map((currency) => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.CommandItem, { key: currency.value, onSelect: () => {
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.CommandGroup, null, currencies.map((currency) => (currency.value !== usedCurrency && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_command__WEBPACK_IMPORTED_MODULE_2__.CommandItem, { key: currency.value, onSelect: () => {
                                 setSelectedCurrency(currency.value);
                                 setSelectedCurrencyName(currency.label);
                                 setOpen(false);
                             } },
                             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_7__["default"], { className: (0,_lib_utils__WEBPACK_IMPORTED_MODULE_1__.cn)("mr-2 h-4 w-4", selectedCurrency === currency.value ? "opacity-100" : "opacity-0") }),
-                            currency.label))))))))));
+                            currency.label)))))))))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Inputfield);
 

@@ -25,11 +25,14 @@ interface InputfieldProps {
     amount: string;
     setAmount: (value: string) => void;
     currencies: Currency[];
+    usedCurrency: string;
 }
 
-function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount, currencies }: InputfieldProps) {
+function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyName, setSelectedCurrencyName, amount, setAmount, currencies, usedCurrency }: InputfieldProps) {
 
     const [open, setOpen] = React.useState(false);
+
+    
     
     
     return (
@@ -40,7 +43,7 @@ function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyNam
                 <PopoverTrigger asChild className="border-0 border-l rounded-l-none w-full">
                     <Button variant="outline" role="combobox" aria-expanded={open} className="flex justify-between items-center w-full">
                         <span className="overflow-hidden text-ellipsis w-[100px] text-left">
-                            {selectedCurrency ? currencies.find((item) => item.value === selectedCurrency)?.label : "Select currency"}
+                            {selectedCurrency ? currencies.find((item) => item.value === selectedCurrency && item.value !== usedCurrency)?.label : "Select currency"}
                         </span>
 
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -55,19 +58,21 @@ function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyNam
                             <CommandEmpty>No results found</CommandEmpty>
                             <CommandGroup>
                                 {currencies.map((currency) => (
-                                    <CommandItem
-                                        key={currency.value}
-                                        onSelect={() => {
-                                            setSelectedCurrency(currency.value);
-                                            setSelectedCurrencyName(currency.label);
-                                            setOpen(false);
-                                        }}
-                                   >
-                                        <Check
-                                            className={cn("mr-2 h-4 w-4", selectedCurrency === currency.value ? "opacity-100" : "opacity-0")}
-                                        />
-                                        {currency.label}
-                                    </CommandItem>        
+                                    currency.value !== usedCurrency && (
+                                        <CommandItem
+                                            key={currency.value}
+                                            onSelect={() => {
+                                                setSelectedCurrency(currency.value);
+                                                setSelectedCurrencyName(currency.label);
+                                                setOpen(false);
+                                            }}
+                                       >
+                                            <Check
+                                                className={cn("mr-2 h-4 w-4", selectedCurrency === currency.value ? "opacity-100" : "opacity-0")}
+                                            />
+                                            {currency.label}
+                                        </CommandItem>        
+                                    )
                                 ))}
                             </CommandGroup>
                         </CommandList>

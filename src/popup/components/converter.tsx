@@ -200,7 +200,8 @@ function Converter() {
                     setSelectedCurrencyName={fromCurrencyNameChange} 
                     amount={fromAmount} 
                     setAmount={fromAmountChange}
-                    currencies={currencies} 
+                    currencies={currencies}
+                    usedCurrency={toCurrency} 
                 />
                 <div className="p-1 w-full" />
                 <Inputfield 
@@ -211,6 +212,7 @@ function Converter() {
                     amount={toAmount} 
                     setAmount={toAmountChange}
                     currencies={currencies}
+                    usedCurrency={fromCurrency}
                 />
             </CardContent>
 
