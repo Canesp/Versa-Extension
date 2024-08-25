@@ -5,11 +5,13 @@ import "../assets/globals.css";
 // Import custom components.
 import Header from "./components/header";
 import Converter from "./components/converter";
+import Footer from "./components/footer";
 
 const popup = (
     <div>
         <Header />
         <Converter />
+        <Footer />
     </div>
 );
 

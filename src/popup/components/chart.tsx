@@ -77,7 +77,7 @@ function Chart( { from, to, selectedRange }: ChartProps ) {
         const max = Math.max(...values);
         const padding = (max - min) * 0.1;
 
-        return [min, max + padding];
+        return [min - padding, max + padding];
     };
 
     const dateFormatted = (date: string) => {

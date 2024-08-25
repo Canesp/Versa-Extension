@@ -16,7 +16,7 @@ function windowClose() {
 function Header() {
     return (
         <div>
-            <div className="flex items-center justify-between p-3">
+            <div className="flex items-center justify-between p-2">
                 <h1 className="text-2xl font-bold"></h1>
                 <Button variant="ghost" size="icon" className="h-7 w-7" onClick={windowClose}>
                     <X size={16} />
