@@ -51,7 +51,7 @@ function Inputfield({ selectedCurrency, setSelectedCurrency, selectedCurrencyNam
                     
                 </PopoverTrigger>
 
-                <PopoverContent className="w-full p-0">
+                <PopoverContent className="w-full p-0 h-[236px]">
                     <Command>
                         <CommandInput placeholder="Search currency" />
                         <CommandList>
