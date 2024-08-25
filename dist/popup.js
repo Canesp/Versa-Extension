@@ -1650,6 +1650,12 @@ video {
 .pt-3 {
   padding-top: 0.75rem;
 }
+.pt-1 {
+  padding-top: 0.25rem;
+}
+.pt-2 {
+  padding-top: 0.5rem;
+}
 .text-left {
   text-align: left;
 }
@@ -1738,6 +1744,12 @@ video {
 }
 .opacity-70 {
   opacity: 0.7;
+}
+.opacity-85 {
+  opacity: 0.85;
+}
+.opacity-60 {
+  opacity: 0.6;
 }
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -2021,6 +2033,18 @@ body {
   opacity: 0.5;
 }
 
+.data-\\[state\\=on\\]\\:opacity-100[data-state="on"] {
+  opacity: 1;
+}
+
+.data-\\[state\\=on\\]\\:opacity-80[data-state="on"] {
+  opacity: 0.8;
+}
+
+.data-\\[state\\=on\\]\\:opacity-90[data-state="on"] {
+  opacity: 0.9;
+}
+
 .data-\\[state\\=open\\]\\:animate-in[data-state="open"] {
   animation-name: enter;
   animation-duration: 150ms;
@@ -2252,7 +2276,7 @@ body {
 
 .\\[\\&_\\[cmdk-item\\]_svg\\]\\:w-5 [cmdk-item] svg {
   width: 1.25rem;
-}`, "",{"version":3,"sources":["webpack://./src/assets/globals.css"],"names":[],"mappings":"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","sourcesContent":["@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n    --background: 0 0% 100%;\n    --foreground: 222.2 84% 4.9%;\n    --card: 0 0% 100%;\n    --card-foreground: 222.2 84% 4.9%;\n    --popover: 0 0% 100%;\n    --popover-foreground: 222.2 84% 4.9%;\n    --primary: 222.2 47.4% 11.2%;\n    --primary-foreground: 210 40% 98%;\n    --secondary: 210 40% 96.1%;\n    --secondary-foreground: 222.2 47.4% 11.2%;\n    --muted: 210 40% 96.1%;\n    --muted-foreground: 215.4 16.3% 46.9%;\n    --accent: 210 40% 96.1%;\n    --accent-foreground: 222.2 47.4% 11.2%;\n    --destructive: 0 84.2% 60.2%;\n    --destructive-foreground: 210 40% 98%;\n    --border: 214.3 31.8% 91.4%;\n    --input: 214.3 31.8% 91.4%;\n    --ring: 222.2 84% 4.9%;\n    --radius: 0.5rem;\n    --chart-1: 12 76% 61%;\n    --chart-2: 173 58% 39%;\n    --chart-3: 197 37% 24%;\n    --chart-4: 43 74% 66%;\n    --chart-5: 27 87% 67%;\n  }\n\n  .dark {\n    --background: 222.2 84% 4.9%;\n    --foreground: 210 40% 98%;\n    --card: 222.2 84% 4.9%;\n    --card-foreground: 210 40% 98%;\n    --popover: 222.2 84% 4.9%;\n    --popover-foreground: 210 40% 98%;\n    --primary: 210 40% 98%;\n    --primary-foreground: 222.2 47.4% 11.2%;\n    --secondary: 217.2 32.6% 17.5%;\n    --secondary-foreground: 210 40% 98%;\n    --muted: 217.2 32.6% 17.5%;\n    --muted-foreground: 215 20.2% 65.1%;\n    --accent: 217.2 32.6% 17.5%;\n    --accent-foreground: 210 40% 98%;\n    --destructive: 0 62.8% 30.6%;\n    --destructive-foreground: 210 40% 98%;\n    --border: 217.2 32.6% 17.5%;\n    --input: 217.2 32.6% 17.5%;\n    --ring: 212.7 26.8% 83.9%;\n    --chart-1: 220 70% 50%;\n    --chart-2: 160 60% 45%;\n    --chart-3: 30 80% 55%;\n    --chart-4: 280 65% 60%;\n    --chart-5: 340 75% 55%;\n  }\n}\n\n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}\n\nbody {\n  width: 360px;\n  height: 600px;\n  border-color: hsl(var(--border));\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/assets/globals.css"],"names":[],"mappings":"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A1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA,8BA0EC;EA1ED;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA,8BA0EC;EA1ED;AA0EC;;AA1ED;EAAA,8BA0EC;EA1ED;AA0EC;;AA1ED;EAAA,oBA0EC;EA1ED;AA0EC;;AA1ED;EAAA,qBA0EC;EA1ED;AA0EC;;AA1ED;EAAA,kBA0EC;EA1ED;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA,oBA0EC;EA1ED;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA,oBA0EC;EA1ED;AA0EC;;AA1ED;EAAA,oBA0EC;EA1ED;AA0EC;;AA1ED;EAAA;AA0EC;;AA1ED;EAAA;AA0EC","sourcesContent":["@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  :root {\n    --background: 0 0% 100%;\n    --foreground: 222.2 84% 4.9%;\n    --card: 0 0% 100%;\n    --card-foreground: 222.2 84% 4.9%;\n    --popover: 0 0% 100%;\n    --popover-foreground: 222.2 84% 4.9%;\n    --primary: 222.2 47.4% 11.2%;\n    --primary-foreground: 210 40% 98%;\n    --secondary: 210 40% 96.1%;\n    --secondary-foreground: 222.2 47.4% 11.2%;\n    --muted: 210 40% 96.1%;\n    --muted-foreground: 215.4 16.3% 46.9%;\n    --accent: 210 40% 96.1%;\n    --accent-foreground: 222.2 47.4% 11.2%;\n    --destructive: 0 84.2% 60.2%;\n    --destructive-foreground: 210 40% 98%;\n    --border: 214.3 31.8% 91.4%;\n    --input: 214.3 31.8% 91.4%;\n    --ring: 222.2 84% 4.9%;\n    --radius: 0.5rem;\n    --chart-1: 12 76% 61%;\n    --chart-2: 173 58% 39%;\n    --chart-3: 197 37% 24%;\n    --chart-4: 43 74% 66%;\n    --chart-5: 27 87% 67%;\n  }\n\n  .dark {\n    --background: 222.2 84% 4.9%;\n    --foreground: 210 40% 98%;\n    --card: 222.2 84% 4.9%;\n    --card-foreground: 210 40% 98%;\n    --popover: 222.2 84% 4.9%;\n    --popover-foreground: 210 40% 98%;\n    --primary: 210 40% 98%;\n    --primary-foreground: 222.2 47.4% 11.2%;\n    --secondary: 217.2 32.6% 17.5%;\n    --secondary-foreground: 210 40% 98%;\n    --muted: 217.2 32.6% 17.5%;\n    --muted-foreground: 215 20.2% 65.1%;\n    --accent: 217.2 32.6% 17.5%;\n    --accent-foreground: 210 40% 98%;\n    --destructive: 0 62.8% 30.6%;\n    --destructive-foreground: 210 40% 98%;\n    --border: 217.2 32.6% 17.5%;\n    --input: 217.2 32.6% 17.5%;\n    --ring: 212.7 26.8% 83.9%;\n    --chart-1: 220 70% 50%;\n    --chart-2: 160 60% 45%;\n    --chart-3: 30 80% 55%;\n    --chart-4: 280 65% 60%;\n    --chart-5: 340 75% 55%;\n  }\n}\n\n@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}\n\nbody {\n  width: 360px;\n  height: 600px;\n  border-color: hsl(var(--border));\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12300,6 +12324,40 @@ var defaultAttributes = {
 
 
 //# sourceMappingURL=defaultAttributes.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lucide-react/dist/esm/icons/arrow-right-left.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/lucide-react/dist/esm/icons/arrow-right-left.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ArrowRightLeft)
+/* harmony export */ });
+/* harmony import */ var _createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../createLucideIcon.js */ "./node_modules/lucide-react/dist/esm/createLucideIcon.js");
+/**
+ * @license lucide-react v0.435.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+
+
+const ArrowRightLeft = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__["default"])("ArrowRightLeft", [
+  ["path", { d: "m16 3 4 4-4 4", key: "1x1c3m" }],
+  ["path", { d: "M20 7H4", key: "zbl0bi" }],
+  ["path", { d: "m8 21-4-4 4-4", key: "h9nckh" }],
+  ["path", { d: "M4 17h16", key: "g4d7ey" }]
+]);
+
+
+//# sourceMappingURL=arrow-right-left.js.map
 
 
 /***/ }),
@@ -65976,14 +66034,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/chart/AreaChart.js");
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/CartesianGrid.js");
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/XAxis.js");
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/YAxis.js");
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/Area.js");
-/* harmony import */ var _components_ui_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/ui/card */ "./src/assets/shadcn-ui/components/ui/card.tsx");
-/* harmony import */ var _components_ui_chart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/ui/chart */ "./src/assets/shadcn-ui/components/ui/chart.tsx");
-/* harmony import */ var _components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/ui/toggle-group */ "./src/assets/shadcn-ui/components/ui/toggle-group.tsx");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/chart/AreaChart.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/CartesianGrid.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/XAxis.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/YAxis.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/cartesian/Area.js");
+/* harmony import */ var _components_ui_chart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/ui/chart */ "./src/assets/shadcn-ui/components/ui/chart.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -65997,12 +66053,10 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 // Import Shadcn-ui components.
 
 
-
-
-function Chart({ from, to }) {
+function Chart({ from, to, selectedRange }) {
     const [historicalRates, setHistoricalRates] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
     const [chartData, setChartData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-    const [selectedRange, setSelectedRange] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("365");
+    //const [selectedRange, setSelectedRange] = useState<string>("365");
     const [chartConfig, setChartConfig] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({ rates: { label: "USD", color: "hsl(var(--chart-2))" } });
     const getColor = (rate1, rate2) => {
         return rate1 > rate2 ? "hsl(var(--chart-1))" : "hsl(var(--chart-2))";
@@ -66088,22 +66142,14 @@ function Chart({ from, to }) {
         }
     }, [chartData, from, to]);
     console.log("Chart config updated: ", chartConfig);
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.Card, { className: "w-full" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardHeader, { className: "p-3" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "flex items-center justify-end w-full" },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_3__.ToggleGroup, { type: "single", defaultValue: "1" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_3__.ToggleGroupItem, { value: "1", className: "text-xs h-5 w-5" }, "1d"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_3__.ToggleGroupItem, { value: "7", className: "text-xs h-5 w-5" }, "1w"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_3__.ToggleGroupItem, { value: "30", className: "text-xs h-5 w-5" }, "1m"),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_3__.ToggleGroupItem, { value: "365", className: "text-xs h-5 w-5" }, "1y")))),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_chart__WEBPACK_IMPORTED_MODULE_2__.ChartContainer, { config: chartConfig },
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_4__.AreaChart, { accessibilityLayer: true, data: chartData, margin: { left: 6, right: 6 } },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_5__.CartesianGrid, { vertical: false }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_6__.XAxis, { dataKey: "date", tickLine: false, axisLine: false, tickMargin: 8, tickFormatter: (value) => dateFormatted(value) }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_7__.YAxis, { dataKey: "rate", tickLine: false, axisLine: false, tickMargin: 8, tickCount: 4, domain: domainValues(chartData), tickFormatter: (value) => value.toFixed(3) }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_chart__WEBPACK_IMPORTED_MODULE_2__.ChartTooltip, { cursor: false, content: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_chart__WEBPACK_IMPORTED_MODULE_2__.ChartTooltipContent, { indicator: "line" }) }),
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_8__.Area, { dataKey: "rate", type: "linear", fill: "var(--color-rates)", fillOpacity: 0.4, stroke: "var(--color-rates)" }))))));
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "w-full" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_chart__WEBPACK_IMPORTED_MODULE_1__.ChartContainer, { config: chartConfig },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_2__.AreaChart, { accessibilityLayer: true, data: chartData, margin: { left: -12, right: 6 } },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_3__.CartesianGrid, { vertical: false }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_4__.XAxis, { dataKey: "date", tickLine: false, axisLine: false, tickMargin: 8, tickFormatter: (value) => dateFormatted(value) }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_5__.YAxis, { dataKey: "rate", tickLine: true, axisLine: false, tickMargin: 8, tickCount: 4, domain: domainValues(chartData), tickFormatter: (value) => value.toFixed(3) }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_chart__WEBPACK_IMPORTED_MODULE_1__.ChartTooltip, { cursor: false, content: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_chart__WEBPACK_IMPORTED_MODULE_1__.ChartTooltipContent, { indicator: "line" }) }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(recharts__WEBPACK_IMPORTED_MODULE_6__.Area, { dataKey: "rate", type: "natural", fill: "var(--color-rates)", fillOpacity: 0.4, stroke: "var(--color-rates)" })))));
 }
 ;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Chart);
@@ -66125,8 +66171,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_ui_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/ui/card */ "./src/assets/shadcn-ui/components/ui/card.tsx");
-/* harmony import */ var _inputfield__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inputfield */ "./src/popup/components/inputfield.tsx");
-/* harmony import */ var _chart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chart */ "./src/popup/components/chart.tsx");
+/* harmony import */ var _components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/ui/toggle-group */ "./src/assets/shadcn-ui/components/ui/toggle-group.tsx");
+/* harmony import */ var _components_ui_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/ui/button */ "./src/assets/shadcn-ui/components/ui/button.tsx");
+/* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/arrow-right-left.js");
+/* harmony import */ var _inputfield__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./inputfield */ "./src/popup/components/inputfield.tsx");
+/* harmony import */ var _chart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./chart */ "./src/popup/components/chart.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -66137,6 +66186,10 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
     });
 };
 
+
+
+
+// Import Icons.
 
 // Import custom components.
 
@@ -66155,6 +66208,7 @@ function Converter() {
     const [currencies, setCurrencies] = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]);
     const [lastFetch, setLastFetch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [fetchTime, setFetchTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({ day: 0, month: "0", hour: "0", minute: "0", timezone: "0" });
+    const [timespan, setTimespan] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("180");
     const timestampToDate = (timestamp) => {
         const date = new Date(timestamp);
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -66282,6 +66336,17 @@ function Converter() {
     const toCurrencyNameChange = (currencyName) => {
         setToCurrencyName(currencyName);
     };
+    const swapCurrencies = () => {
+        const temp = fromCurrency;
+        const tempName = fromCurrencyName;
+        setFromCurrency(toCurrency);
+        setFromCurrencyName(toCurrencyName);
+        setToCurrency(temp);
+        setToCurrencyName(tempName);
+        setFromAmount(toAmount);
+        setToAmount(fromAmount);
+        storeLastUsedCurrencies(toCurrency, fromCurrency);
+    };
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.Card, { className: "m-3" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardHeader, null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
@@ -66303,11 +66368,19 @@ function Converter() {
                 " ",
                 fetchTime.timezone)),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: fromCurrency, setSelectedCurrency: fromCurrencyChange, selectedCurrencyName: fromCurrencyName, setSelectedCurrencyName: fromCurrencyNameChange, amount: fromAmount, setAmount: fromAmountChange, currencies: currencies, usedCurrency: toCurrency }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_4__["default"], { selectedCurrency: fromCurrency, setSelectedCurrency: fromCurrencyChange, selectedCurrencyName: fromCurrencyName, setSelectedCurrencyName: fromCurrencyNameChange, amount: fromAmount, setAmount: fromAmountChange, currencies: currencies, usedCurrency: toCurrency }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "p-1 w-full" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_2__["default"], { selectedCurrency: toCurrency, setSelectedCurrency: toCurrencyChange, selectedCurrencyName: toCurrencyName, setSelectedCurrencyName: toCurrencyNameChange, amount: toAmount, setAmount: toAmountChange, currencies: currencies, usedCurrency: fromCurrency })),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_inputfield__WEBPACK_IMPORTED_MODULE_4__["default"], { selectedCurrency: toCurrency, setSelectedCurrency: toCurrencyChange, selectedCurrencyName: toCurrencyName, setSelectedCurrencyName: toCurrencyNameChange, amount: toAmount, setAmount: toAmountChange, currencies: currencies, usedCurrency: fromCurrency }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "w-full flex items-center justify-between pt-2" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_3__.Button, { variant: "ghost", onClick: swapCurrencies, size: "icon", className: "w-5 h-5" },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_6__["default"], { size: 12, className: "opacity-60" })),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_2__.ToggleGroup, { type: "single", defaultValue: "180", onValueChange: (e) => setTimespan(e) },
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_2__.ToggleGroupItem, { value: "30", className: "text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90" }, "30d"),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_2__.ToggleGroupItem, { value: "90", className: "text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90" }, "3m"),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_2__.ToggleGroupItem, { value: "180", className: "text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90" }, "6m"),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_toggle_group__WEBPACK_IMPORTED_MODULE_2__.ToggleGroupItem, { value: "365", className: "text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90" }, "1y")))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardFooter, null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_chart__WEBPACK_IMPORTED_MODULE_3__["default"], { from: fromCurrency, to: toCurrency }))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_chart__WEBPACK_IMPORTED_MODULE_5__["default"], { from: fromCurrency, to: toCurrency, selectedRange: timespan }))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Converter);
 

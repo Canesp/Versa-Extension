@@ -15,13 +15,14 @@ interface chartData {
 interface ChartProps {
     from: string;
     to: string;
+    selectedRange: string;
 }
 
-function Chart( { from, to }: ChartProps ) {
+function Chart( { from, to, selectedRange }: ChartProps ) {
 
     const [historicalRates, setHistoricalRates] = useState<any>({});
     const [chartData, setChartData] = useState<chartData[]>([]);
-    const [selectedRange, setSelectedRange] = useState<string>("365");
+    //const [selectedRange, setSelectedRange] = useState<string>("365");
     const [chartConfig, setChartConfig] = useState<ChartConfig>({ rates: { label: "USD", color: "hsl(var(--chart-2))" } });
 
     const getColor = (rate1: number, rate2: number) => {
@@ -126,31 +127,34 @@ function Chart( { from, to }: ChartProps ) {
     console.log("Chart config updated: ", chartConfig);
 
     return (
-        <Card className="w-full">
-            <CardHeader className="p-3">
-                <div className="flex items-center justify-end w-full">
-                    <ToggleGroup type="single" defaultValue="1">
-                        <ToggleGroupItem value="1" className="text-xs h-5 w-5">1d</ToggleGroupItem>
-                        <ToggleGroupItem value="7" className="text-xs h-5 w-5">1w</ToggleGroupItem>
-                        <ToggleGroupItem value="30" className="text-xs h-5 w-5">1m</ToggleGroupItem>
-                        <ToggleGroupItem value="365" className="text-xs h-5 w-5">1y</ToggleGroupItem>
-                    </ToggleGroup>
-                </div>
-            </CardHeader>
+        <div className="w-full">
+            <ChartContainer config={chartConfig}>
+                <AreaChart accessibilityLayer data={chartData} margin={{left: -12, right: 6}}>
+                    <CartesianGrid vertical={false} />
+                    <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => dateFormatted(value)}/>
+                    <YAxis dataKey="rate" tickLine={true} axisLine={false} tickMargin={8} tickCount={4} domain={domainValues(chartData)} tickFormatter={(value) => value.toFixed(3)}/>
+                    <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line"/>}/>
+                    <Area dataKey={"rate"} type={"natural"} fill="var(--color-rates)" fillOpacity={0.4} stroke="var(--color-rates)"/> 
+                </AreaChart>
+            </ChartContainer>
 
-            <CardContent>
-                <ChartContainer config={chartConfig}>
-                    <AreaChart accessibilityLayer data={chartData} margin={{left: 6, right: 6}}>
-                        <CartesianGrid vertical={false} />
-                        <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => dateFormatted(value)}/>
-                        <YAxis dataKey="rate" tickLine={false} axisLine={false} tickMargin={8} tickCount={4} domain={domainValues(chartData)} tickFormatter={(value) => value.toFixed(3)}/>
-                        <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line"/>}/>
-                        <Area dataKey={"rate"} type={"linear"} fill="var(--color-rates)" fillOpacity={0.4} stroke="var(--color-rates)"/> 
-                    </AreaChart>
-                </ChartContainer>
-            </CardContent>
-        </Card>
-        
+            {/* <Card className="w-full">
+                <CardHeader className="p-3">
+                    <div className="flex items-center justify-end w-full">
+                        <ToggleGroup type="single" defaultValue="1">
+                            <ToggleGroupItem value="1" className="text-xs h-5 w-5">1d</ToggleGroupItem>
+                            <ToggleGroupItem value="7" className="text-xs h-5 w-5">1w</ToggleGroupItem>
+                            <ToggleGroupItem value="30" className="text-xs h-5 w-5">1m</ToggleGroupItem>
+                            <ToggleGroupItem value="365" className="text-xs h-5 w-5">1y</ToggleGroupItem>
+                        </ToggleGroup>
+                    </div>
+                </CardHeader>
+
+                <CardContent>
+                    
+                </CardContent>
+            </Card> */}
+        </div>
     );
 };
 

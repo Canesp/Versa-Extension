@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react';
 // Import Shadcn-ui components.
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Button } from '@/components/ui/button';
+
+// Import Icons.
+import { ArrowRightLeft } from "lucide-react";
 
 // Import custom components.
 import Inputfield from "./inputfield";
@@ -35,6 +39,8 @@ function Converter() {
     const [currencies, setCurrencies] = React.useState<Currency[]>([]);
     const [lastFetch, setLastFetch] = useState<any>(null);
     const [fetchTime, setFetchTime] = useState<FetchTime>({ day: 0, month: "0", hour: "0", minute: "0", timezone: "0" });
+
+    const [timespan , setTimespan] = useState<string>("180");
 
     const timestampToDate = (timestamp: number) => {
         const date = new Date(timestamp);
@@ -176,6 +182,21 @@ function Converter() {
         setToCurrencyName(currencyName);
     }
 
+    const swapCurrencies = () => {
+        const temp = fromCurrency;
+        const tempName = fromCurrencyName;
+
+        setFromCurrency(toCurrency);
+        setFromCurrencyName(toCurrencyName);
+        setToCurrency(temp);
+        setToCurrencyName(tempName);
+
+        setFromAmount(toAmount);
+        setToAmount(fromAmount);
+
+        storeLastUsedCurrencies(toCurrency, fromCurrency);
+    }
+
     return (
         <Card className="m-3">
             <CardHeader>
@@ -214,10 +235,23 @@ function Converter() {
                     currencies={currencies}
                     usedCurrency={fromCurrency}
                 />
+
+                <div className="w-full flex items-center justify-between pt-2">
+                    <Button variant="ghost" onClick={swapCurrencies} size="icon" className="w-5 h-5">
+                        <ArrowRightLeft size={12} className="opacity-60"/>
+                    </Button>
+
+                    <ToggleGroup type="single" defaultValue="180" onValueChange={(e) => setTimespan(e)}>
+                        <ToggleGroupItem value="30" className="text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90">30d</ToggleGroupItem>
+                        <ToggleGroupItem value="90" className="text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90">3m</ToggleGroupItem>
+                        <ToggleGroupItem value="180" className="text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90">6m</ToggleGroupItem>
+                        <ToggleGroupItem value="365" className="text-xs h-5 w-5 opacity-60 data-[state=on]:opacity-90">1y</ToggleGroupItem>
+                    </ToggleGroup>
+                </div>
             </CardContent>
 
             <CardFooter>
-                <Chart from={fromCurrency} to={toCurrency} />
+                <Chart from={fromCurrency} to={toCurrency} selectedRange={timespan} />
             </CardFooter>
         </Card>
     )
